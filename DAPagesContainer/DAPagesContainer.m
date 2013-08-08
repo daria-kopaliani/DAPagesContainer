@@ -129,8 +129,8 @@
         }
         [UIView animateWithDuration:(animated) ? 0.3 : 0. delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:^
          {
-             [previosSelectdItem setTitleColor:[UIColor colorWithWhite:0.6 alpha:1.] forState:UIControlStateNormal];
-             [nextSelectdItem setTitleColor:[UIColor colorWithWhite:1. alpha:1.] forState:UIControlStateNormal];
+             [previosSelectdItem setTitleColor:self.pageItemsTitleColor forState:UIControlStateNormal];
+             [nextSelectdItem setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
          } completion:nil];
     } else {
         // This means we should "jump" over at least one view controller
@@ -156,8 +156,8 @@
             self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:selectedIndex].x,
                                                         self.pageIndicatorView.center.y);
             self.topBar.scrollView.contentOffset = [self.topBar contentOffsetForSelectedItemAtIndex:selectedIndex];
-            [previosSelectdItem setTitleColor:[UIColor colorWithWhite:0.6 alpha:1.] forState:UIControlStateNormal];
-            [nextSelectdItem setTitleColor:[UIColor colorWithWhite:1. alpha:1.] forState:UIControlStateNormal];
+            [previosSelectdItem setTitleColor:self.pageItemsTitleColor forState:UIControlStateNormal];
+            [nextSelectdItem setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
         } completion:^(BOOL finished) {
             for (NSUInteger i = 0; i < self.viewControllers.count; i++) {
                 UIViewController *viewController = self.viewControllers[i];
@@ -188,9 +188,26 @@
     }
 }
 
+- (void)setPageItemsTitleColor:(UIColor *)pageItemsTitleColor
+{
+    if (![_pageItemsTitleColor isEqual:pageItemsTitleColor]) {
+        _pageItemsTitleColor = pageItemsTitleColor;
+        self.topBar.itemTitleColor = pageItemsTitleColor;
+        [self.topBar.itemViews[self.selectedIndex] setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
+    }
+}
+
 - (void)setSelectedIndex:(NSUInteger)selectedIndex
 {
     [self setSelectedIndex:selectedIndex animated:NO];
+}
+
+- (void)setSelectedPageItemTitleColor:(UIColor *)selectedPageItemTitleColor
+{
+    if (![_selectedPageItemTitleColor isEqual:selectedPageItemTitleColor]) {
+        _selectedPageItemTitleColor = selectedPageItemTitleColor;
+        [self.topBar.itemViews[self.selectedIndex] setTitleColor:selectedPageItemTitleColor forState:UIControlStateNormal];
+    }
 }
 
 - (void)setTopBarBackgroundColor:(UIColor *)topBarBackgroundColor
@@ -329,10 +346,28 @@
             CGFloat nextItemPageIndicatorX = [self.topBar centerForSelectedItemAtIndex:targetIndex].x;
             UIButton *previosSelectedItem = self.topBar.itemViews[self.selectedIndex];
             UIButton *nextSelectedItem = self.topBar.itemViews[targetIndex];
-            [previosSelectedItem setTitleColor:[UIColor colorWithWhite:0.6 + 0.4 * (1 - fabsf(ratio))
-                                                                 alpha:1.] forState:UIControlStateNormal];
-            [nextSelectedItem setTitleColor:[UIColor colorWithWhite:0.6 + 0.4 * fabsf(ratio)
-                                                              alpha:1.] forState:UIControlStateNormal];
+            
+        
+            
+            CGFloat red, green, blue, alpha, highlightedRed, highlightedGreen, highlightedBlue, highlightedAlpha;
+            [self getRed:&red green:&green blue:&blue alpha:&alpha fromColor:self.pageItemsTitleColor];
+            [self getRed:&highlightedRed green:&highlightedGreen blue:&highlightedBlue alpha:&highlightedAlpha fromColor:self.selectedPageItemTitleColor];
+            
+            CGFloat absRatio = fabsf(ratio);
+            UIColor *prev = [UIColor colorWithRed:red * absRatio + highlightedRed * (1 - absRatio)
+                                            green:green * absRatio + highlightedGreen * (1 - absRatio)
+                                             blue:blue * absRatio + highlightedBlue  * (1 - absRatio)
+                                            alpha:alpha * absRatio + highlightedAlpha  * (1 - absRatio)];
+            UIColor *next = [UIColor colorWithRed:red * (1 - absRatio) + highlightedRed * absRatio
+                                            green:green * (1 - absRatio) + highlightedGreen * absRatio
+                                             blue:blue * (1 - absRatio) + highlightedBlue * absRatio
+                                            alpha:alpha * (1 - absRatio) + highlightedAlpha * absRatio];
+            
+            [previosSelectedItem setTitleColor:prev forState:UIControlStateNormal];
+            [nextSelectedItem setTitleColor:next forState:UIControlStateNormal];
+
+            
+            
             if (scrollingTowards) {
                 self.topBar.scrollView.contentOffset = CGPointMake(previousItemContentOffsetX +
                                                                    (nextItemContentOffsetX - previousItemContentOffsetX) * ratio , 0.);
@@ -348,6 +383,23 @@
                                                             self.pageIndicatorView.center.y);
             }
         }
+    }
+}
+
+- (void)getRed:(CGFloat *)red green:(CGFloat *)green blue:(CGFloat *)blue alpha:(CGFloat *)alpha fromColor:(UIColor *)color
+{
+    const CGFloat *components = CGColorGetComponents(color.CGColor);
+    CGColorSpaceModel colorSpaceModel = CGColorSpaceGetModel(CGColorGetColorSpace(color.CGColor));
+    if (colorSpaceModel == kCGColorSpaceModelRGB && CGColorGetNumberOfComponents(color.CGColor) == 4) {
+        *red = components[0];
+        *green = components[1];
+        *blue = components[2];
+        *alpha = components[3];
+    } else if (colorSpaceModel == kCGColorSpaceModelMonochrome && CGColorGetNumberOfComponents(color.CGColor) == 2) {
+        *red = *green = *blue = components[0];
+        *alpha = components[1];
+    } else {
+        *red = *green = *blue = *alpha = 0;
     }
 }
 

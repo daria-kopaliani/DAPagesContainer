@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UIColor *topBarBackgroundColor;
 @property (strong, nonatomic) UIFont *topBarItemLabelsFont;
 @property (strong, nonatomic) UIColor *pageItemsTitleColor;
-@property (strong, nonatomic) UIColor *selectedPageItemColor;
+@property (strong, nonatomic) UIColor *selectedPageItemTitleColor;
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex animated:(BOOL)animated;
 - (void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation;

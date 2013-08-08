@@ -33,6 +33,7 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
         self.scrollView.showsHorizontalScrollIndicator = NO;
         [self addSubview:self.scrollView];
         self.font = [UIFont systemFontOfSize:14];
+        self.itemTitleColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -54,6 +55,16 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
     } else {
         CGFloat totalOffset = self.scrollView.contentSize.width - CGRectGetWidth(self.scrollView.frame);
         return CGPointMake(index * totalOffset / (self.itemViews.count - 1), 0.);
+    }
+}
+
+- (void)setItemTitleColor:(UIColor *)itemTitleColor
+{
+    if (![_itemTitleColor isEqual:itemTitleColor]) {
+        _itemTitleColor = itemTitleColor;
+        for (UIButton *button in self.itemViews) {
+            [button setTitleColor:itemTitleColor forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -92,7 +103,7 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
     UIButton *itemView = [[UIButton alloc] initWithFrame:frame];
     [itemView addTarget:self action:@selector(itemViewTapped:) forControlEvents:UIControlEventTouchUpInside];
     itemView.titleLabel.font = self.font;
-    [itemView setTitleColor:[UIColor colorWithWhite:0.6 alpha:1.] forState:UIControlStateNormal];
+    [itemView setTitleColor:self.itemTitleColor forState:UIControlStateNormal];
     [self.scrollView addSubview:itemView];
     return itemView;
 }
