@@ -25,7 +25,7 @@
 
 - (void)setColor:(UIColor *)color
 {
-    if ([_color isEqual:color]) {
+    if (![_color isEqual:color]) {
         _color = color;
         [self setNeedsDisplay];
     }
