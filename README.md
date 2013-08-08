@@ -81,5 +81,5 @@ Go ahead and experiment with these properties:
 TODO
 ==============
 
-- Add colors customization for title views in top bar (not only shadows of grey)
+- <del>Add colors customization for title views in top bar (not only shadows of grey)</del>
 
