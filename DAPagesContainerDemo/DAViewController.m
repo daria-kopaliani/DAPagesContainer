@@ -54,6 +54,9 @@
     [lionViewController.view addSubview:lionImageView];
     lionViewController.title = @"REALLY CUTE LION";
 
+    self.pagesContainer.pageItemsTitleColor = [UIColor grayColor];
+    self.pagesContainer.selectedPageItemTitleColor = [UIColor whiteColor];
+    self.pagesContainer.topBarBackgroundColor = [UIColor blueColor];
     self.pagesContainer.viewControllers = @[beaverViewController, buckDeerViewController, catViewController, lionViewController];
 }
 

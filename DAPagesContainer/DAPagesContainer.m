@@ -31,6 +31,9 @@
 
 
 @implementation DAPagesContainer
+@synthesize pageItemsTitleColor = _pageItemsTitleColor;
+@synthesize selectedPageItemTitleColor = _selectedPageItemTitleColor;
+@synthesize topBarBackgroundColor = _topBarBackgroundColor;
 
 #pragma mark - Initialization
 
@@ -61,7 +64,6 @@
 {
     _topBarHeight = 44.;
     _topBarBackgroundColor = [UIColor colorWithWhite:0.1 alpha:1.];
-    _topBarItemLabelsFont = [UIFont systemFontOfSize:12];
     _pageIndicatorViewSize = CGSizeMake(17., 7.);
 }
 
@@ -228,6 +230,10 @@
 - (void)setTopBarItemLabelsFont:(UIFont *)font
 {
     self.topBar.font = font;
+}
+
+- (UIFont *)topBarItemLabelsFont {
+  return self.topBar.font;
 }
 
 - (void)setViewControllers:(NSArray *)viewControllers
