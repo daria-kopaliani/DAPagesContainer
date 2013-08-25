@@ -77,12 +77,15 @@
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.,
                                                                      self.topBarHeight,
                                                                      CGRectGetWidth(self.view.frame),
-                                                                     CGRectGetHeight(self.view.frame) - self.topBarHeight)];
+                                                                     CGRectGetHeight(self.view.frame) - self.topBarHeight -
+                                                                     CGRectGetHeight(self.navigationController.navigationBar.frame))];
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth
         | UIViewAutoresizingFlexibleHeight;
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.bounces = NO;
     [self.view addSubview:self.scrollView];
     [self startObservingContentOffsetForScrollView:self.scrollView];    
 
