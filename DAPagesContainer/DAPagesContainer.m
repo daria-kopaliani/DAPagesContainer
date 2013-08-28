@@ -63,6 +63,8 @@
     _topBarBackgroundColor = [UIColor colorWithWhite:0.1 alpha:1.];
     _topBarItemLabelsFont = [UIFont systemFontOfSize:12];
     _pageIndicatorViewSize = CGSizeMake(17., 7.);
+    self.pageItemsTitleColor = [UIColor lightGrayColor];
+    self.selectedPageItemTitleColor = [UIColor whiteColor];
 }
 
 #pragma mark - View life cycle
@@ -89,6 +91,7 @@
                                                                            CGRectGetWidth(self.view.frame),
                                                                            self.topBarHeight)];
     self.topBar.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    self.topBar.itemTitleColor = self.pageItemsTitleColor;
     self.topBar.delegate = self;
     [self.view addSubview:self.topBar];
 
@@ -119,6 +122,7 @@
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex animated:(BOOL)animated
 {
+    NSAssert(selectedIndex < self.viewControllers.count, @"selectedIndex should belong within the range of the view controllers array");
     UIButton *previosSelectdItem = self.topBar.itemViews[self.selectedIndex];
     UIButton *nextSelectdItem = self.topBar.itemViews[selectedIndex];
     if (abs(self.selectedIndex - selectedIndex) <= 1) {
