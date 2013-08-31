@@ -99,7 +99,7 @@
                                                                                    self.topBarHeight,
                                                                                    self.pageIndicatorViewSize.width,
                                                                                    self.pageIndicatorViewSize.height)];
-    [self.view addSubview:self.pageIndicatorView];
+    [self.topBar addSubview:self.pageIndicatorView];
     self.topBar.backgroundColor = self.pageIndicatorView.color = self.topBarBackgroundColor;
 }
 
