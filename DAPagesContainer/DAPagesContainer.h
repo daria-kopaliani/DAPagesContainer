@@ -58,6 +58,7 @@
  This is white by default.
  */
 @property (strong, nonatomic) UIColor *selectedPageItemTitleColor;
+@property (strong, nonatomic) UIColor *borderGlowColor;
 
 /**
  Changes 'selectedIndex' property value and navigates to the newly selected view controller

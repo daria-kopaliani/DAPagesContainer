@@ -27,6 +27,7 @@
     [self.pagesContainer willMoveToParentViewController:self];
     self.pagesContainer.view.frame = self.view.bounds;
     self.pagesContainer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.pagesContainer.borderGlowColor = [UIColor greenColor];
     [self.view addSubview:self.pagesContainer.view];
     [self.pagesContainer didMoveToParentViewController:self];
     
@@ -54,6 +55,9 @@
     [lionViewController.view addSubview:lionImageView];
     lionViewController.title = @"REALLY CUTE LION";
 
+    self.pagesContainer.pageItemsTitleColor = [UIColor grayColor];
+    self.pagesContainer.selectedPageItemTitleColor = [UIColor whiteColor];
+    self.pagesContainer.topBarBackgroundColor = [UIColor blueColor];
     self.pagesContainer.viewControllers = @[beaverViewController, buckDeerViewController, catViewController, lionViewController];
 }
 

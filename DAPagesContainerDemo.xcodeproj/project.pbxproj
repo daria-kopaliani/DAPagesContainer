@@ -315,6 +315,7 @@
 				INFOPLIST_FILE = "DAPagesContainerDemo/DAPagesContainerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = DAPagesContainerDemo;
+				PROVISIONING_PROFILE = "1D06FC99-BBD3-4914-ADE5-73B28BE4B011";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -327,6 +328,7 @@
 				INFOPLIST_FILE = "DAPagesContainerDemo/DAPagesContainerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = DAPagesContainerDemo;
+				PROVISIONING_PROFILE = "1D06FC99-BBD3-4914-ADE5-73B28BE4B011";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

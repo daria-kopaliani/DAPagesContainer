@@ -20,6 +20,7 @@
 
 
 @implementation DAPagesContainerTopBar
+@synthesize itemTitleColor = _itemTitleColor;
 
 CGFloat const DAPagesContainerTopBarItemViewWidth = 100.;
 CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
@@ -58,12 +59,12 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
     }
 }
 
-- (void)setItemTitleColor:(UIColor *)itemTitleColor
+- (void)setItemTitleColor:(UIColor *)theItemTitleColor
 {
-    if (![_itemTitleColor isEqual:itemTitleColor]) {
-        _itemTitleColor = itemTitleColor;
+    if (![_itemTitleColor isEqual:theItemTitleColor]) {
+        _itemTitleColor = theItemTitleColor;
         for (UIButton *button in self.itemViews) {
-            [button setTitleColor:itemTitleColor forState:UIControlStateNormal];
+            [button setTitleColor:theItemTitleColor forState:UIControlStateNormal];
         }
     }
 }

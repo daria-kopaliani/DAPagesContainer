@@ -31,6 +31,10 @@
 
 
 @implementation DAPagesContainer
+@synthesize pageItemsTitleColor = _pageItemsTitleColor;
+@synthesize selectedPageItemTitleColor = _selectedPageItemTitleColor;
+@synthesize topBarBackgroundColor = _topBarBackgroundColor;
+@synthesize borderGlowColor = _borderGlowColor;
 
 #pragma mark - Initialization
 
@@ -61,7 +65,6 @@
 {
     _topBarHeight = 44.;
     _topBarBackgroundColor = [UIColor colorWithWhite:0.1 alpha:1.];
-    _topBarItemLabelsFont = [UIFont systemFontOfSize:12];
     _pageIndicatorViewSize = CGSizeMake(17., 7.);
     self.pageItemsTitleColor = [UIColor lightGrayColor];
     self.selectedPageItemTitleColor = [UIColor whiteColor];
@@ -78,11 +81,11 @@
                                                                      self.topBarHeight,
                                                                      CGRectGetWidth(self.view.frame),
                                                                      CGRectGetHeight(self.view.frame) - self.topBarHeight)];
-    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth
-        | UIViewAutoresizingFlexibleHeight;
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.bounces = NO;
     [self.view addSubview:self.scrollView];
     [self startObservingContentOffsetForScrollView:self.scrollView];    
 
@@ -99,7 +102,7 @@
                                                                                    self.topBarHeight,
                                                                                    self.pageIndicatorViewSize.width,
                                                                                    self.pageIndicatorViewSize.height)];
-    [self.view addSubview:self.pageIndicatorView];
+    [self.topBar addSubview:self.pageIndicatorView];
     self.topBar.backgroundColor = self.pageIndicatorView.color = self.topBarBackgroundColor;
 }
 
@@ -232,6 +235,18 @@
 - (void)setTopBarItemLabelsFont:(UIFont *)font
 {
     self.topBar.font = font;
+}
+
+- (void)setBorderGlowColor:(UIColor *)borderGlowColor {
+  _borderGlowColor = borderGlowColor;
+  self.topBar.layer.shadowColor = _borderGlowColor.CGColor;
+  self.topBar.layer.shadowOffset = CGSizeZero;
+  self.topBar.layer.shadowRadius = 4.0f;
+  self.topBar.layer.shadowOpacity = 1.0f;
+}
+
+- (UIFont *)topBarItemLabelsFont {
+  return self.topBar.font;
 }
 
 - (void)setViewControllers:(NSArray *)viewControllers
