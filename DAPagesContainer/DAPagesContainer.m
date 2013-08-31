@@ -34,6 +34,7 @@
 @synthesize pageItemsTitleColor = _pageItemsTitleColor;
 @synthesize selectedPageItemTitleColor = _selectedPageItemTitleColor;
 @synthesize topBarBackgroundColor = _topBarBackgroundColor;
+@synthesize borderGlowColor = _borderGlowColor;
 
 #pragma mark - Initialization
 
@@ -100,6 +101,18 @@
                                                                                    self.pageIndicatorViewSize.height)];
     [self.view addSubview:self.pageIndicatorView];
     self.topBar.backgroundColor = self.pageIndicatorView.color = self.topBarBackgroundColor;
+  
+    if (self.borderGlowColor) {
+      self.topBar.layer.shadowColor = self.borderGlowColor.CGColor;
+      self.topBar.layer.shadowOffset = CGSizeZero;
+      self.topBar.layer.shadowRadius = 4.0f;
+      self.topBar.layer.shadowOpacity = 1.0f;
+      
+      self.pageIndicatorView.layer.shadowColor = self.borderGlowColor.CGColor;
+      self.pageIndicatorView.layer.shadowOffset = CGSizeZero;
+      self.pageIndicatorView.layer.shadowRadius = 4.0f;
+      self.pageIndicatorView.layer.shadowOpacity = 1.0f;
+    }
 }
 
 - (void)viewDidUnload

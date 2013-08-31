@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UIFont *topBarItemLabelsFont;
 @property (strong, nonatomic) UIColor *pageItemsTitleColor;
 @property (strong, nonatomic) UIColor *selectedPageItemTitleColor;
+@property (strong, nonatomic) UIColor *borderGlowColor;
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex animated:(BOOL)animated;
 - (void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation;
