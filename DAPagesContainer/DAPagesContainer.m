@@ -239,11 +239,6 @@
   self.topBar.layer.shadowOffset = CGSizeZero;
   self.topBar.layer.shadowRadius = 4.0f;
   self.topBar.layer.shadowOpacity = 1.0f;
-  
-  self.pageIndicatorView.layer.shadowColor = _borderGlowColor.CGColor;
-  self.pageIndicatorView.layer.shadowOffset = CGSizeMake(0, 3);
-  self.pageIndicatorView.layer.shadowRadius = 4.0f;
-  self.pageIndicatorView.layer.shadowOpacity = 1.0f;
 }
 
 - (UIFont *)topBarItemLabelsFont {
