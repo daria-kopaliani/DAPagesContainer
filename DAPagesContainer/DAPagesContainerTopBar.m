@@ -11,6 +11,7 @@
 
 @interface DAPagesContainerTopBar ()
 
+@property (strong, nonatomic) UIImageView *backgroundImageView;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) NSArray *itemViews;
 
@@ -69,6 +70,11 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 }
 
 #pragma mark * Overwritten setters
+
+- (void)setBackgroundImage:(UIImage *)backgroundImage
+{
+    self.backgroundImageView.image = backgroundImage;
+}
 
 - (void)setItemTitles:(NSArray *)itemTitles
 {
@@ -138,6 +144,18 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 {
     [super layoutSubviews];
     [self layoutItemViews];
+}
+
+#pragma mark * Lazy getters
+
+- (UIImageView *)backgroundImageView
+{
+    if (!_backgroundImageView) {
+        _backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self insertSubview:_backgroundImageView belowSubview:self.scrollView];
+    }
+    return _backgroundImageView;
 }
 
 @end

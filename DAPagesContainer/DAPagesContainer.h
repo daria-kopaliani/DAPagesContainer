@@ -30,10 +30,21 @@
 @property (assign, nonatomic) NSUInteger topBarHeight;
 
 /**
+ An optional image page for the page indicator view
+ This is {22., 9.} by default.
+ */
+@property (strong, nonatomic) UIImage *pageIndicatorImage;
+
+/**
  A size of the page indicator view.
- This is {17., 7.} by default.
+@discussion if this property is not nil 'pageIndicatorViewSize' property value will be ignored, size for the page indicator image view will equal the size of 'pageIndicatorImage'
  */
 @property (assign, nonatomic) CGSize pageIndicatorViewSize;
+
+/**
+ An optional background image of the top bar.
+ */
+@property (strong, nonatomic) UIImage *topBarBackgroundImage;
 
 /**
  A background color of the top bar.

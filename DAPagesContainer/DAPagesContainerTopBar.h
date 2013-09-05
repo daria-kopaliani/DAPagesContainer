@@ -20,6 +20,7 @@
 
 @interface DAPagesContainerTopBar : UIView
 
+@property (strong, nonatomic) UIImage *backgroundImage;
 @property (strong, nonatomic) UIColor *itemTitleColor;
 @property (strong, nonatomic) NSArray *itemTitles;
 @property (strong, nonatomic) UIFont *font;
