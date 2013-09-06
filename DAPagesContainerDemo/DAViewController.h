@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DAPagesContainer.h"
 
-@interface DAViewController : UIViewController <DAPagesContainerTopBarDelegate>
+@interface DAViewController : UIViewController <DAPagesContainerDelegate>
 
 @end

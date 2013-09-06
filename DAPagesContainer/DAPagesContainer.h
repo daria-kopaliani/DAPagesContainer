@@ -12,7 +12,7 @@
 @class DAPagesContainer;
 
 
-@protocol DAPagesContainerTopBarDelegate <NSObject>
+@protocol DAPagesContainerDelegate <NSObject>
 
 - (void)itemAtIndex:(NSUInteger)index didSelectInPagesContainer:(DAPagesContainer *)container;
 
@@ -23,7 +23,7 @@
 /**
  Delegate property for comunicating external controllers the selection of an item.
  */
-@property (weak, nonatomic) id<DAPagesContainerTopBarDelegate> delegate;
+@property (weak, nonatomic) id<DAPagesContainerDelegate> delegate;
 
 /**
  The view controllers to be displayed in DAPagesContainer in order they appear in this array.
