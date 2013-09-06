@@ -9,7 +9,7 @@
 #import "DAPagesContainer.h"
 
 #import "DAPagesContainerTopBar.h"
-#import "DAPageIndicatorView.h"
+
 
 
 @interface DAPagesContainer () <DAPagesContainerTopBarDelegate, UIScrollViewDelegate>
@@ -278,6 +278,16 @@
     }
 }
 
+-(void)setPageIndicatorShape:(PageIndicatorShape)pageIndicatorShape
+{
+    [(DAPageIndicatorView *)self.pageIndicatorView setPageIndicatorShape:pageIndicatorShape];
+}
+
+-(void)setPageIndicatorColor:(UIColor *)color
+{
+    [(DAPageIndicatorView *)self.pageIndicatorView setColor:color];
+}
+
 #pragma mark - Private
 
 - (void)layoutSubviews
@@ -346,6 +356,10 @@
 - (void)itemAtIndex:(NSUInteger)index didSelectInPagesContainerTopBar:(DAPagesContainerTopBar *)bar
 {
     [self setSelectedIndex:index animated:YES];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(itemAtIndex:didSelectInPagesContainer:)]) {
+        [self.delegate itemAtIndex:index didSelectInPagesContainer:self];
+    }
 }
 
 #pragma mark - UIScrollView delegate

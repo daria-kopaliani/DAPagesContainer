@@ -7,9 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DAPageIndicatorView.h"
 
+@class DAPagesContainer;
+
+
+@protocol DAPagesContainerTopBarDelegate <NSObject>
+
+- (void)itemAtIndex:(NSUInteger)index didSelectInPagesContainer:(DAPagesContainer *)container;
+
+@end
 
 @interface DAPagesContainer : UIViewController
+
+/**
+ Delegate property for comunicating external controllers the selection of an item.
+ */
+@property (weak, nonatomic) id<DAPagesContainerTopBarDelegate> delegate;
 
 /**
  The view controllers to be displayed in DAPagesContainer in order they appear in this array.
@@ -40,6 +54,16 @@
 @discussion if this property is not nil 'pageIndicatorViewSize' property value will be ignored, size for the page indicator image view will equal the size of 'pageIndicatorImage'
  */
 @property (assign, nonatomic) CGSize pageIndicatorViewSize;
+
+/**
+ Value of the shape of the page indicator when no image is assigned to de pageIndicatorImage.
+ */
+@property (nonatomic) PageIndicatorShape pageIndicatorShape;
+
+/**
+ Color assigned to the page indicator.
+ */
+@property (nonatomic, strong) UIColor *pageIndicatorColor;
 
 /**
  An optional background image of the top bar.
