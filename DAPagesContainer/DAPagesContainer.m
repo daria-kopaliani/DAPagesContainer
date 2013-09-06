@@ -168,6 +168,7 @@
             self.shouldObserveContentOffset = YES;
         }];
     }
+    
     _selectedIndex = selectedIndex;
 }
 
@@ -366,8 +367,14 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    NSUInteger temporalSelected = self.selectedIndex;
     self.selectedIndex = scrollView.contentOffset.x / CGRectGetWidth(self.scrollView.frame);
     self.scrollView.userInteractionEnabled = YES;
+    
+    
+    if ((temporalSelected != self.selectedIndex) && self.delegate && [self.delegate respondsToSelector:@selector(itemAtIndex:didSelectInPagesContainer:)]) {
+        [self.delegate itemAtIndex:self.selectedIndex didSelectInPagesContainer:self];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
