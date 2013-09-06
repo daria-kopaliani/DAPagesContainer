@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DAPagesContainer.h"
 
-@interface DAViewController : UIViewController
+@interface DAViewController : UIViewController <DAPagesContainerTopBarDelegate>
 
 @end

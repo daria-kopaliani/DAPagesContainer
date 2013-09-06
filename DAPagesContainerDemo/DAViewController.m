@@ -8,9 +8,6 @@
 
 #import "DAViewController.h"
 
-#import "DAPagesContainer.h"
-
-
 @interface DAViewController ()
 
 @property (strong, nonatomic) DAPagesContainer *pagesContainer;
@@ -55,6 +52,13 @@
     lionViewController.title = @"REALLY CUTE LION";
 
     self.pagesContainer.viewControllers = @[beaverViewController, buckDeerViewController, catViewController, lionViewController];
+    
+    self.pagesContainer.pageIndicatorViewSize = CGSizeMake(100.f, 3.f);
+    self.pagesContainer.pageIndicatorColor = [UIColor redColor];
+    self.pagesContainer.pageIndicatorShape = PageIndicatorShapeSquare;
+    
+    self.pagesContainer.delegate = self;
+    
 }
 
 - (void)viewWillUnload
@@ -67,5 +71,26 @@
 {
     [self.pagesContainer updateLayoutForNewOrientation:toInterfaceOrientation];
 }
+
+-(void)itemAtIndex:(NSUInteger)index didSelectInPagesContainer:(DAPagesContainer *)container{
+    NSLog(@"Selected intex: %d", index);
+    
+    switch (index) {
+        case 0:
+            self.pagesContainer.pageIndicatorViewSize = CGSizeMake(80.f, 3.f);
+            break;
+        case 1:
+            self.pagesContainer.pageIndicatorViewSize = CGSizeMake(100.f, 3.f);
+            break;
+        case 2:
+            self.pagesContainer.pageIndicatorViewSize = CGSizeMake(50.f, 3.f);
+            break;
+        default:
+            self.pagesContainer.pageIndicatorViewSize = CGSizeMake(150.f, 3.f);
+            break;
+    }
+    
+}
+
 
 @end
