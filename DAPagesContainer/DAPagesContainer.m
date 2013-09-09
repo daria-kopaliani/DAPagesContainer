@@ -122,7 +122,7 @@
         [self.scrollView setContentOffset:CGPointMake(selectedIndex * self.scrollWidth, 0.) animated:animated];
         if (selectedIndex == _selectedIndex) {
             self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:selectedIndex].x,
-                                                        self.pageIndicatorView.center.y);
+                                                        [self pageIndicatorCenterY]);
         }
         [UIView animateWithDuration:(animated) ? 0.3 : 0. delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:^
          {
@@ -151,7 +151,7 @@
         [self.scrollView setContentOffset:targetOffset animated:YES];
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:selectedIndex].x,
-                                                        self.pageIndicatorView.center.y);
+                                                        [self pageIndicatorCenterY]);
             self.topBar.scrollView.contentOffset = [self.topBar contentOffsetForSelectedItemAtIndex:selectedIndex];
             [previosSelectdItem setTitleColor:self.pageItemsTitleColor forState:UIControlStateNormal];
             [nextSelectdItem setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
@@ -250,7 +250,7 @@
         [self layoutSubviews];
         self.selectedIndex = 0;
         self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:self.selectedIndex].x,
-                                                    self.pageIndicatorView.center.y);
+                                                    [self pageIndicatorCenterY]);
     }
 }
 
@@ -282,10 +282,6 @@
 - (void)layoutSubviews
 {
     self.topBar.frame = CGRectMake(0., 0., CGRectGetWidth(self.view.bounds), self.topBarHeight);
-    self.pageIndicatorView.frame = CGRectMake(0.,
-                                              self.topBarHeight - 2,
-                                              self.pageIndicatorViewSize.width,
-                                              self.pageIndicatorViewSize.height);
     CGFloat x = 0.;
     for (UIViewController *viewController in self.viewControllers) {
         viewController.view.frame = CGRectMake(x, 0, CGRectGetWidth(self.scrollView.frame), self.scrollHeight);
@@ -294,9 +290,14 @@
     self.scrollView.contentSize = CGSizeMake(x, self.scrollHeight);
     [self.scrollView setContentOffset:CGPointMake(self.selectedIndex * self.scrollWidth, 0.) animated:YES];
     self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:self.selectedIndex].x,
-                                                self.pageIndicatorView.center.y);
+                                                [self pageIndicatorCenterY]);
     self.topBar.scrollView.contentOffset = [self.topBar contentOffsetForSelectedItemAtIndex:self.selectedIndex];
     self.scrollView.userInteractionEnabled = YES;
+}
+
+- (CGFloat)pageIndicatorCenterY
+{
+    return CGRectGetMaxY(self.topBar.frame) - 2. + CGRectGetHeight(self.pageIndicatorView.frame) / 2.;
 }
 
 - (UIView *)pageIndicatorView
@@ -306,8 +307,8 @@
             _pageIndicatorView = [[UIImageView alloc] initWithImage:self.pageIndicatorImage];
         } else {
             _pageIndicatorView = [[DAPageIndicatorView alloc] initWithFrame:CGRectMake(0.,
-                                                                                           44,
-                                                                                           self.pageIndicatorViewSize.width,
+                                                                                       44,
+                                                                                       self.pageIndicatorViewSize.width,
                                                                                        self.pageIndicatorViewSize.height)];
             [(DAPageIndicatorView *)_pageIndicatorView setColor:self.topBarBackgroundColor];
         }
@@ -419,14 +420,14 @@
                                                                    (nextItemContentOffsetX - previousItemContentOffsetX) * ratio , 0.);
                 self.pageIndicatorView.center = CGPointMake(previousItemPageIndicatorX +
                                                             (nextItemPageIndicatorX - previousItemPageIndicatorX) * ratio,
-                                                            self.pageIndicatorView.center.y);
+                                                            [self pageIndicatorCenterY]);
                 
             } else {
                 self.topBar.scrollView.contentOffset = CGPointMake(previousItemContentOffsetX -
                                                                    (nextItemContentOffsetX - previousItemContentOffsetX) * ratio , 0.);
                 self.pageIndicatorView.center = CGPointMake(previousItemPageIndicatorX -
                                                             (nextItemPageIndicatorX - previousItemPageIndicatorX) * ratio,
-                                                            self.pageIndicatorView.center.y);
+                                                            [self pageIndicatorCenterY]);
             }
         }
     }
