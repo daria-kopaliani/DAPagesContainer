@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DAPagesContainerDelegate;
 
 @interface DAPagesContainer : UIViewController
 
@@ -21,8 +22,15 @@
 @property (strong, nonatomic) UIColor *pageItemsTitleColor;
 @property (strong, nonatomic) UIColor *selectedPageItemTitleColor;
 @property (strong, nonatomic) UIColor *borderGlowColor;
+@property (assign, nonatomic) NSObject<DAPagesContainerDelegate> *delegate;
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex animated:(BOOL)animated;
 - (void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation;
+
+@end
+
+@protocol DAPagesContainerDelegate <NSObject>
+
+- (void)pagesContainer:(DAPagesContainer *)container didSelectIndex:(NSUInteger)index;
 
 @end

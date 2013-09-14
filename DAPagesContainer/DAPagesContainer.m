@@ -173,6 +173,7 @@
             self.shouldObserveContentOffset = YES;
         }];
     }
+    [self.delegate pagesContainer:self didSelectIndex:selectedIndex];
     _selectedIndex = selectedIndex;
 }
 
