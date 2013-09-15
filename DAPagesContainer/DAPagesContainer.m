@@ -239,7 +239,7 @@
   self.topBar.layer.shadowColor = _borderGlowColor.CGColor;
   self.topBar.layer.shadowOffset = CGSizeZero;
   self.topBar.layer.shadowRadius = 4.0f;
-  self.topBar.layer.shadowOpacity = 1.0f;
+  self.topBar.layer.shadowOpacity = 0.7f;
 }
 
 - (UIFont *)topBarItemLabelsFont {
