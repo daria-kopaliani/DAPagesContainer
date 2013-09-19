@@ -217,7 +217,7 @@
 - (void)setTopBarBackgroundColor:(UIColor *)topBarBackgroundColor
 {
     _topBarBackgroundColor = topBarBackgroundColor;
-    self.topBar.backgroundColor = topBarBackgroundColor;
+    self.topBar.barTintColor = topBarBackgroundColor;
     self.pageIndicatorView.color = topBarBackgroundColor;
 }
 

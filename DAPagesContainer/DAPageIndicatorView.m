@@ -16,6 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.barStyle = UIBarStyleBlack;
         self.opaque = NO;
         _color = [UIColor blackColor];
     }
@@ -28,6 +29,7 @@
 {
     if (![_color isEqual:color]) {
         _color = color;
+        self.barTintColor = _color;
         [self setNeedsDisplay];
     }
 }
