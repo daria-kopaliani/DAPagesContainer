@@ -29,11 +29,9 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.barStyle = UIBarStyleBlack;
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
         self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.scrollView.showsHorizontalScrollIndicator = NO;
-        self.scrollView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.scrollView];
         self.font = [UIFont systemFontOfSize:14];
         self.itemTitleColor = [UIColor whiteColor];
@@ -107,7 +105,6 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
     [itemView addTarget:self action:@selector(itemViewTapped:) forControlEvents:UIControlEventTouchUpInside];
     itemView.titleLabel.font = self.font;
     [itemView setTitleColor:self.itemTitleColor forState:UIControlStateNormal];
-    itemView.backgroundColor = [UIColor clearColor];
     [self.scrollView addSubview:itemView];
     return itemView;
 }

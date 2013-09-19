@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DAPageIndicatorView : UINavigationBar
+@interface DAPageIndicatorView : UIView
 
 @property (strong, nonatomic) UIColor *color;
 
