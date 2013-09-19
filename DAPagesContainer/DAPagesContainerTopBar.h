@@ -18,7 +18,7 @@
 @end
 
 
-@interface DAPagesContainerTopBar : UIView
+@interface DAPagesContainerTopBar : UINavigationBar
 
 @property (strong, nonatomic) UIColor *itemTitleColor;
 @property (strong, nonatomic) NSArray *itemTitles;
