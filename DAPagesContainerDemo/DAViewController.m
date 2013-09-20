@@ -57,6 +57,7 @@
 
     self.pagesContainer.pageItemsTitleColor = [UIColor grayColor];
     self.pagesContainer.selectedPageItemTitleColor = [UIColor whiteColor];
+    self.pagesContainer.topBarBackgroundColor = [UIColor blackColor];
     self.pagesContainer.viewControllers = @[beaverViewController, buckDeerViewController, catViewController, lionViewController];
 }
 

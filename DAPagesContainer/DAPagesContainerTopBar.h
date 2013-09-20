@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FXBlurView.h"
 
 @class DAPagesContainerTopBar;
 
@@ -18,7 +18,7 @@
 @end
 
 
-@interface DAPagesContainerTopBar : UINavigationBar
+@interface DAPagesContainerTopBar : FXBlurView
 
 @property (strong, nonatomic) UIColor *itemTitleColor;
 @property (strong, nonatomic) NSArray *itemTitles;

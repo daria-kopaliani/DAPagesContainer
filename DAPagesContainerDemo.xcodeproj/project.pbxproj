@@ -24,6 +24,8 @@
 		43222CC71768E4D30088986F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43222CC41768E4D30088986F /* MainStoryboard.storyboard */; };
 		438BA887175785B00033EB2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438BA886175785B00033EB2D /* UIKit.framework */; };
 		438BA88B175785B00033EB2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438BA88A175785B00033EB2D /* CoreGraphics.framework */; };
+		A7B9B3D417EBD3C700E437F9 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B9B3D317EBD3C700E437F9 /* FXBlurView.m */; };
+		A7B9B3D617EBD41100E437F9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B9B3D517EBD41100E437F9 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,9 @@
 		438BA886175785B00033EB2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		438BA888175785B00033EB2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		438BA88A175785B00033EB2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A7B9B3D217EBD3C700E437F9 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXBlurView.h; path = DAPagesContainer/FXBlurView.h; sourceTree = "<group>"; };
+		A7B9B3D317EBD3C700E437F9 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXBlurView.m; path = DAPagesContainer/FXBlurView.m; sourceTree = "<group>"; };
+		A7B9B3D517EBD41100E437F9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7B9B3D617EBD41100E437F9 /* Accelerate.framework in Frameworks */,
 				438BA887175785B00033EB2D /* UIKit.framework in Frameworks */,
 				438BA88B175785B00033EB2D /* CoreGraphics.framework in Frameworks */,
 			);
@@ -89,6 +95,7 @@
 		438BA885175785B00033EB2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7B9B3D517EBD41100E437F9 /* Accelerate.framework */,
 				438BA886175785B00033EB2D /* UIKit.framework */,
 				438BA888175785B00033EB2D /* Foundation.framework */,
 				438BA88A175785B00033EB2D /* CoreGraphics.framework */,
@@ -128,6 +135,7 @@
 		438BA8A9175785BB0033EB2D /* DAPagesContainer */ = {
 			isa = PBXGroup;
 			children = (
+				A7B9B3D117EBD3B800E437F9 /* FXBlurView */,
 				43222CA21768E4590088986F /* DAPagesContainer.h */,
 				43222CA31768E4590088986F /* DAPagesContainer.m */,
 				43222CA41768E4590088986F /* DAPagesContainerTopBar.h */,
@@ -147,6 +155,15 @@
 				43222CBD1768E49F0088986F /* lion.jpg */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		A7B9B3D117EBD3B800E437F9 /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				A7B9B3D217EBD3C700E437F9 /* FXBlurView.h */,
+				A7B9B3D317EBD3C700E437F9 /* FXBlurView.m */,
+			);
+			name = FXBlurView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +239,7 @@
 			files = (
 				43222CA61768E4590088986F /* DAPageIndicatorView.m in Sources */,
 				43222CA71768E4590088986F /* DAPagesContainer.m in Sources */,
+				A7B9B3D417EBD3C700E437F9 /* FXBlurView.m in Sources */,
 				43222CA81768E4590088986F /* DAPagesContainerTopBar.m in Sources */,
 				43222CAD1768E4770088986F /* DAAppDelegate.m in Sources */,
 				43222CAE1768E4770088986F /* DAViewController.m in Sources */,

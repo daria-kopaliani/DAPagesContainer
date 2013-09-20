@@ -101,6 +101,8 @@
                                                                                    self.pageIndicatorViewSize.height)];
     [self.topBar addSubview:self.pageIndicatorView];
     self.topBar.backgroundColor = self.pageIndicatorView.color = self.topBarBackgroundColor;
+    self.topBar.tintColor = [UIColor clearColor];
+    self.topBar.dynamic = NO;
 }
 
 - (void)viewDidUnload
@@ -340,6 +342,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     self.scrollView.userInteractionEnabled = NO;
+    [self.topBar setNeedsDisplay];
 }
 
 #pragma mark - KVO
