@@ -36,7 +36,7 @@
     beaverImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [beaverViewController.view addSubview:beaverImageView];
     beaverViewController.title = @"BEAVER";
-  
+    
     UIViewController *buckDeerViewController = [[UIViewController alloc] init];
     UIImageView *buckDeerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"buckDeer.jpg"]];
     buckDeerImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -57,7 +57,7 @@
 
     self.pagesContainer.pageItemsTitleColor = [UIColor grayColor];
     self.pagesContainer.selectedPageItemTitleColor = [UIColor whiteColor];
-    self.pagesContainer.topBarBackgroundColor = [UIColor blackColor];
+    self.pagesContainer.topBarBackgroundColor = [UIColor blueColor];
     self.pagesContainer.viewControllers = @[beaverViewController, buckDeerViewController, catViewController, lionViewController];
 }
 

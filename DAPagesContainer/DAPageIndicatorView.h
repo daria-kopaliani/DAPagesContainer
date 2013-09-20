@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FXBlurView.h"
 
-@interface DAPageIndicatorView : UIView
+
+@interface DAPageIndicatorView : UINavigationBar
 
 @property (strong, nonatomic) UIColor *color;
 

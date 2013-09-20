@@ -101,8 +101,6 @@
                                                                                    self.pageIndicatorViewSize.height)];
     [self.topBar addSubview:self.pageIndicatorView];
     self.topBar.backgroundColor = self.pageIndicatorView.color = self.topBarBackgroundColor;
-    self.topBar.tintColor = [UIColor clearColor];
-    self.topBar.dynamic = NO;
 }
 
 - (void)viewDidUnload
@@ -219,7 +217,7 @@
 - (void)setTopBarBackgroundColor:(UIColor *)topBarBackgroundColor
 {
     _topBarBackgroundColor = topBarBackgroundColor;
-    self.topBar.backgroundColor = topBarBackgroundColor;
+    self.topBar.barTintColor = topBarBackgroundColor;
     self.pageIndicatorView.color = topBarBackgroundColor;
 }
 
@@ -342,7 +340,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     self.scrollView.userInteractionEnabled = NO;
-    [self.topBar setNeedsDisplay];
 }
 
 #pragma mark - KVO
