@@ -58,6 +58,12 @@
 
 - (void)dealloc
 {
+    for (int i = 0; i < self.viewControllers.count; i++) {
+      UIViewController *controller = [self.viewControllers objectAtIndex:i];
+      [controller removeFromParentViewController];
+      [controller.view removeFromSuperview];
+    }
+  
     [self stopObservingContentOffset];
 }
 
@@ -165,6 +171,7 @@
             for (NSUInteger i = 0; i < self.viewControllers.count; i++) {
                 UIViewController *viewController = self.viewControllers[i];
                 viewController.view.frame = CGRectMake(i * self.scrollWidth, 0., self.scrollWidth, self.scrollHeight);
+                [self addChildViewController:viewController];
                 [self.scrollView addSubview:viewController.view];
             }
             self.scrollView.contentSize = CGSizeMake(self.scrollWidth * self.viewControllers.count, self.scrollHeight);
@@ -254,6 +261,7 @@
         for (UIViewController *viewController in viewControllers) {
             [viewController willMoveToParentViewController:self];
             viewController.view.frame = CGRectMake(0., 0., CGRectGetWidth(self.scrollView.frame), self.scrollHeight);
+            [self addChildViewController:viewController];
             [self.scrollView addSubview:viewController.view];
             [viewController didMoveToParentViewController:self];
         }
