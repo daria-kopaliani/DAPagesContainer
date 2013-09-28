@@ -261,7 +261,6 @@
         for (UIViewController *viewController in viewControllers) {
             [viewController willMoveToParentViewController:self];
             viewController.view.frame = CGRectMake(0., 0., CGRectGetWidth(self.scrollView.frame), self.scrollHeight);
-            [self addChildViewController:viewController];
             [self.scrollView addSubview:viewController.view];
             [viewController didMoveToParentViewController:self];
         }
