@@ -26,6 +26,7 @@
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex animated:(BOOL)animated;
 - (void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation;
+- (void)layoutSubviews;
 
 @end
 

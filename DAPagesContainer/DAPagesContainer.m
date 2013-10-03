@@ -23,7 +23,6 @@
 @property (readonly, assign, nonatomic) CGFloat scrollWidth;
 @property (readonly, assign, nonatomic) CGFloat scrollHeight;
 
-- (void)layoutSubviews;
 - (void)startObservingContentOffsetForScrollView:(UIScrollView *)scrollView;
 - (void)stopObservingContentOffset;
 
