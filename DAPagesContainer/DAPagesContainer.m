@@ -59,7 +59,7 @@
 
 - (void)setUp
 {
-    _topBarHeight = 44.;
+    _topBarHeight = 44;
     _topBarBackgroundColor = [UIColor colorWithWhite:0.1 alpha:1.];
     _topBarItemLabelsFont = [UIFont systemFontOfSize:12];
     _pageIndicatorViewSize = CGSizeMake(22., 9.);
@@ -202,7 +202,7 @@
     } completion:nil];
 }
 
-- (void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation
+- (void)updateLayoutForNewOrientation:(UIInterfaceOrientation)__unused orientation
 {
     [self layoutSubviews];
 }
@@ -250,7 +250,7 @@
     }
 }
 
-- (void)setTopBarBackgroundImage:(UIImage *)topBarBackgroundImage
+- (void)__unused setTopBarBackgroundImage:(UIImage *)topBarBackgroundImage
 {
     self.topBar.backgroundImage = topBarBackgroundImage;
 }
@@ -286,7 +286,7 @@
         [self layoutSubviews];
         self.selectedIndex = 0;
         self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:self.selectedIndex].x,
-                                                    [self pageIndicatorCenterY]);
+                [self pageIndicatorCenterY]);
     }
 }
 
@@ -445,7 +445,7 @@
         oldY = self.selectedIndex * CGRectGetHeight(self.scrollView.frame);
     }
     if ((oldX != self.scrollView.contentOffset.x || oldY != self.scrollView.contentOffset.y ) && self.shouldObserveContentOffset) {
-        BOOL scrollingTowards=NO;
+        BOOL scrollingTowards;
         if(self.scrollDirection == DAPagesScrollDirectionHorizontal) {
             scrollingTowards = (self.scrollView.contentOffset.x > oldX);
         } else {

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30F61FFF3B88B55E2ACE5E64 /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F614DDA182987D8B8CB332 /* DAViewController.m */; };
 		43222CA61768E4590088986F /* DAPageIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43222CA11768E4590088986F /* DAPageIndicatorView.m */; };
 		43222CA71768E4590088986F /* DAPagesContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 43222CA31768E4590088986F /* DAPagesContainer.m */; };
 		43222CA81768E4590088986F /* DAPagesContainerTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 43222CA51768E4590088986F /* DAPagesContainerTopBar.m */; };
 		43222CAD1768E4770088986F /* DAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43222CAA1768E4770088986F /* DAAppDelegate.m */; };
-		43222CAE1768E4770088986F /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43222CAC1768E4770088986F /* DAViewController.m */; };
 		43222CB61768E48E0088986F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43222CB11768E48E0088986F /* Default-568h@2x.png */; };
 		43222CB71768E48E0088986F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 43222CB21768E48E0088986F /* Default.png */; };
 		43222CB81768E48E0088986F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43222CB31768E48E0088986F /* Default@2x.png */; };
@@ -27,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30F614DDA182987D8B8CB332 /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAViewController.m; path = DAPagesContainerDemo/DAViewController.m; sourceTree = "<group>"; };
+		30F61EF8B27FD79CBF1E6018 /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAViewController.h; path = DAPagesContainerDemo/DAViewController.h; sourceTree = "<group>"; };
 		43222CA01768E4590088986F /* DAPageIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPageIndicatorView.h; path = DAPagesContainer/DAPageIndicatorView.h; sourceTree = "<group>"; };
 		43222CA11768E4590088986F /* DAPageIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPageIndicatorView.m; path = DAPagesContainer/DAPageIndicatorView.m; sourceTree = "<group>"; };
 		43222CA21768E4590088986F /* DAPagesContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPagesContainer.h; path = DAPagesContainer/DAPagesContainer.h; sourceTree = "<group>"; };
@@ -35,8 +37,6 @@
 		43222CA51768E4590088986F /* DAPagesContainerTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPagesContainerTopBar.m; path = DAPagesContainer/DAPagesContainerTopBar.m; sourceTree = "<group>"; };
 		43222CA91768E4770088986F /* DAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAAppDelegate.h; path = DAPagesContainerDemo/DAAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		43222CAA1768E4770088986F /* DAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAAppDelegate.m; path = DAPagesContainerDemo/DAAppDelegate.m; sourceTree = SOURCE_ROOT; };
-		43222CAB1768E4770088986F /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAViewController.h; path = DAPagesContainerDemo/DAViewController.h; sourceTree = SOURCE_ROOT; };
-		43222CAC1768E4770088986F /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAViewController.m; path = DAPagesContainerDemo/DAViewController.m; sourceTree = SOURCE_ROOT; };
 		43222CAF1768E48E0088986F /* DAPagesContainerDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "DAPagesContainerDemo-Info.plist"; path = "DAPagesContainerDemo/DAPagesContainerDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
 		43222CB01768E48E0088986F /* DAPagesContainerDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DAPagesContainerDemo-Prefix.pch"; path = "DAPagesContainerDemo/DAPagesContainerDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		43222CB11768E48E0088986F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "DAPagesContainerDemo/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -82,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				438BA883175785B00033EB2D /* DAPagesContainerDemo.app */,
+				30F614DDA182987D8B8CB332 /* DAViewController.m */,
+				30F61EF8B27FD79CBF1E6018 /* DAViewController.h */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,8 +103,6 @@
 			children = (
 				43222CA91768E4770088986F /* DAAppDelegate.h */,
 				43222CAA1768E4770088986F /* DAAppDelegate.m */,
-				43222CAB1768E4770088986F /* DAViewController.h */,
-				43222CAC1768E4770088986F /* DAViewController.m */,
 				438BA88D175785B00033EB2D /* Supporting Files */,
 			);
 			name = DAPagesContainerDemo;
@@ -224,8 +224,8 @@
 				43222CA71768E4590088986F /* DAPagesContainer.m in Sources */,
 				43222CA81768E4590088986F /* DAPagesContainerTopBar.m in Sources */,
 				43222CAD1768E4770088986F /* DAAppDelegate.m in Sources */,
-				43222CAE1768E4770088986F /* DAViewController.m in Sources */,
 				43222CB91768E48E0088986F /* main.m in Sources */,
+				30F61FFF3B88B55E2ACE5E64 /* DAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
