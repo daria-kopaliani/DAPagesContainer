@@ -8,13 +8,13 @@
 
 #import "DAViewController.h"
 
-#import "DAPagesContainer.h"
-
 
 @interface DAViewController ()
 
 @property (strong, nonatomic) DAPagesContainer *pagesContainer;
 
+@property (nonatomic, strong) UIButton *changeOrientationButton;
+@property (nonatomic) DAPagesScrollDirection scrollDirection;
 @end
 
 
@@ -23,13 +23,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.pagesContainer = [[DAPagesContainer alloc] init];
-    [self.pagesContainer willMoveToParentViewController:self];
-    self.pagesContainer.view.frame = self.view.bounds;
-    self.pagesContainer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:self.pagesContainer.view];
+    self.scrollDirection = DAPagesScrollDirectionVertical;
+    [self createPagesContainer];
     [self.pagesContainer didMoveToParentViewController:self];
-    
+    self.changeOrientationButton = [[UIButton alloc] initWithFrame:CGRectMake(210, 500, 100, 50)];
+    [self.changeOrientationButton setTitle:@"Horizontal" forState:UIControlStateNormal];
+    self.changeOrientationButton.backgroundColor = [UIColor blackColor];
+    [self.changeOrientationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.changeOrientationButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [self.changeOrientationButton addTarget:self action:@selector(changeOrientation) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.changeOrientationButton];
+
     UIViewController *beaverViewController = [[UIViewController alloc] init];
     UIImageView *beaverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"beaver.jpg"]];
     beaverImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -57,6 +61,31 @@
     self.pagesContainer.viewControllers = @[beaverViewController, buckDeerViewController, catViewController, lionViewController];
 }
 
+- (void)createPagesContainer {
+    self.pagesContainer = [[DAPagesContainer alloc] init];
+    [self.pagesContainer willMoveToParentViewController:self];
+    self.pagesContainer.view.frame = self.view.bounds;
+    self.pagesContainer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.pagesContainer.scrollDirection = self.scrollDirection;
+    [self.view addSubview:self.pagesContainer.view];
+}
+
+- (void)changeOrientation {
+    NSArray *copy = [self.pagesContainer.viewControllers copy];
+    if(self.scrollDirection == DAPagesScrollDirectionHorizontal){
+        [self.changeOrientationButton setTitle:@"Horizontal" forState:UIControlStateNormal];
+        self.scrollDirection = DAPagesScrollDirectionVertical;
+    } else {
+        [self.changeOrientationButton setTitle:@"Vertical" forState:UIControlStateNormal];
+        self.scrollDirection = DAPagesScrollDirectionHorizontal;
+    }
+    [self.pagesContainer.view removeFromSuperview];
+    self.pagesContainer = nil;
+    [self createPagesContainer];
+    self.pagesContainer.viewControllers = copy;
+    [self.view bringSubviewToFront:self.changeOrientationButton];
+}
+
 - (void)viewWillUnload
 {
     self.pagesContainer = nil;
@@ -67,5 +96,7 @@
 {
     [self.pagesContainer updateLayoutForNewOrientation:toInterfaceOrientation];
 }
+
+
 
 @end
