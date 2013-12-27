@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    DAPagesScrollDirectionHorizontal,
+    DAPagesScrollDirectionVertical
+} DAPagesScrollDirection;
+
 
 @interface DAPagesContainer : UIViewController
 
@@ -69,6 +74,11 @@
  This is white by default.
  */
 @property (strong, nonatomic) UIColor *selectedPageItemTitleColor;
+
+/**
+* Choose from supported scrolling directions when navigating either in topbar or on page
+*/
+@property (assign) DAPagesScrollDirection  scrollDirection;
 
 /**
  Changes 'selectedIndex' property value and navigates to the newly selected view controller
