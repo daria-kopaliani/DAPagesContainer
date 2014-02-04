@@ -9,7 +9,7 @@
 #import "DAPagesContainer.h"
 
 #import "DAPagesContainerTopBar.h"
-#import "DAPageIndicatorView.h"
+
 
 
 @interface DAPagesContainer () <DAPagesContainerTopBarDelegate, UIScrollViewDelegate>
@@ -167,6 +167,7 @@
             self.shouldObserveContentOffset = YES;
         }];
     }
+    
     _selectedIndex = selectedIndex;
 }
 
@@ -277,6 +278,16 @@
     }
 }
 
+-(void)setPageIndicatorShape:(PageIndicatorShape)pageIndicatorShape
+{
+    [(DAPageIndicatorView *)self.pageIndicatorView setPageIndicatorShape:pageIndicatorShape];
+}
+
+-(void)setPageIndicatorColor:(UIColor *)color
+{
+    [(DAPageIndicatorView *)self.pageIndicatorView setColor:color];
+}
+
 #pragma mark - Private
 
 - (void)layoutSubviews
@@ -346,14 +357,24 @@
 - (void)itemAtIndex:(NSUInteger)index didSelectInPagesContainerTopBar:(DAPagesContainerTopBar *)bar
 {
     [self setSelectedIndex:index animated:YES];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(itemAtIndex:didSelectInPagesContainer:)]) {
+        [self.delegate itemAtIndex:index didSelectInPagesContainer:self];
+    }
 }
 
 #pragma mark - UIScrollView delegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    NSUInteger temporalSelected = self.selectedIndex;
     self.selectedIndex = scrollView.contentOffset.x / CGRectGetWidth(self.scrollView.frame);
     self.scrollView.userInteractionEnabled = YES;
+    
+    
+    if ((temporalSelected != self.selectedIndex) && self.delegate && [self.delegate respondsToSelector:@selector(itemAtIndex:didSelectInPagesContainer:)]) {
+        [self.delegate itemAtIndex:self.selectedIndex didSelectInPagesContainer:self];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

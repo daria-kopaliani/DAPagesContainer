@@ -41,7 +41,20 @@
     
     CGContextBeginPath(context);
     CGContextMoveToPoint   (context, CGRectGetMinX(rect), CGRectGetMinY(rect));
-    CGContextAddLineToPoint(context, CGRectGetMidX(rect), CGRectGetMaxY(rect));
+    
+    switch (self.pageIndicatorShape) {
+        case PageIndicatorShapeTriangle:
+            CGContextAddLineToPoint(context, CGRectGetMidX(rect), CGRectGetMaxY(rect));
+            break;
+        case PageIndicatorShapeSquare:
+            CGContextAddLineToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect));
+            CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect));
+            break;
+        default:
+            CGContextAddLineToPoint(context, CGRectGetMidX(rect), CGRectGetMaxY(rect));
+            break;
+    }
+    
     CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMinY(rect));
     CGContextClosePath(context);
     
