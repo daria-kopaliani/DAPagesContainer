@@ -118,7 +118,7 @@
     NSAssert(selectedIndex < self.viewControllers.count, @"selectedIndex should belong within the range of the view controllers array");
     UIButton *previosSelectdItem = self.topBar.itemViews[self.selectedIndex];
     UIButton *nextSelectdItem = self.topBar.itemViews[selectedIndex];
-    if (abs(self.selectedIndex - selectedIndex) <= 1) {
+    if (abs((int())self.selectedIndex - selectedIndex)) <= 1) {
         [self.scrollView setContentOffset:CGPointMake(selectedIndex * self.scrollWidth, 0.) animated:animated];
         if (selectedIndex == _selectedIndex) {
             self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:selectedIndex].x,
