@@ -242,6 +242,7 @@
         _viewControllers = viewControllers;
         self.topBar.itemTitles = [viewControllers valueForKey:@"title"];
         for (UIViewController *viewController in viewControllers) {
+            [self addChildViewController:viewController];
             [viewController willMoveToParentViewController:self];
             viewController.view.frame = CGRectMake(0., 0., CGRectGetWidth(self.scrollView.frame), self.scrollHeight);
             [self.scrollView addSubview:viewController.view];
