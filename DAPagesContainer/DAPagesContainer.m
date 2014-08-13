@@ -181,6 +181,8 @@
 {
     if ([self.pageIndicatorView isKindOfClass:[DAPageIndicatorView class]]) {
         if (!CGSizeEqualToSize(self.pageIndicatorView.frame.size, size)) {
+            [_pageIndicatorView removeFromSuperview];
+            _pageIndicatorView = nil;
             _pageIndicatorViewSize = size;
             [self layoutSubviews];
         }
