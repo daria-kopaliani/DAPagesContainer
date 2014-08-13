@@ -181,6 +181,8 @@
 {
     if ([self.pageIndicatorView isKindOfClass:[DAPageIndicatorView class]]) {
         if (!CGSizeEqualToSize(self.pageIndicatorView.frame.size, size)) {
+            [_pageIndicatorView removeFromSuperview];
+            _pageIndicatorView = nil;
             _pageIndicatorViewSize = size;
             [self layoutSubviews];
         }
@@ -242,6 +244,7 @@
         _viewControllers = viewControllers;
         self.topBar.itemTitles = [viewControllers valueForKey:@"title"];
         for (UIViewController *viewController in viewControllers) {
+            [self addChildViewController:viewController];
             [viewController willMoveToParentViewController:self];
             viewController.view.frame = CGRectMake(0., 0., CGRectGetWidth(self.scrollView.frame), self.scrollHeight);
             [self.scrollView addSubview:viewController.view];
