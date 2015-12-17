@@ -55,6 +55,11 @@
     lionViewController.title = @"REALLY CUTE LION";
 
     self.pagesContainer.viewControllers = @[beaverViewController, buckDeerViewController, catViewController, lionViewController];
+    
+    
+//    [self.pagesContainer.topBar layoutItemWithSpecifyX:0 Y:0 w:CGRectGetWidth(self.view.frame)/4 h:CGRectGetHeight(self.pagesContainer.topBar.frame)];
+//    self.pagesContainer.pageIndicatorViewSize = CGSizeMake(CGRectGetWidth(self.view.frame)/4, 2);
+//    self.pagesContainer.pageIndicatorImage = [UIImage imageNamed:@"indicator.png"];
 }
 
 - (void)viewWillUnload

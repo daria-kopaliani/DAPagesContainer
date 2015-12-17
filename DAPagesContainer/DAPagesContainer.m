@@ -8,14 +8,11 @@
 
 #import "DAPagesContainer.h"
 
-#import "DAPagesContainerTopBar.h"
-#import "DAPageIndicatorView.h"
+
 
 
 @interface DAPagesContainer () <DAPagesContainerTopBarDelegate, UIScrollViewDelegate>
 
-@property (strong, nonatomic) DAPagesContainerTopBar *topBar;
-@property (strong, nonatomic) UIScrollView *scrollView;
 @property (weak,   nonatomic) UIScrollView *observingScrollView;
 @property (strong, nonatomic) UIView *pageIndicatorView;
 
@@ -118,7 +115,7 @@
     NSAssert(selectedIndex < self.viewControllers.count, @"selectedIndex should belong within the range of the view controllers array");
     UIButton *previosSelectdItem = self.topBar.itemViews[self.selectedIndex];
     UIButton *nextSelectdItem = self.topBar.itemViews[selectedIndex];
-    if (abs(self.selectedIndex - selectedIndex) <= 1) {
+    if ( self.selectedIndex < selectedIndex || (self.selectedIndex - selectedIndex) <= 1) {
         [self.scrollView setContentOffset:CGPointMake(selectedIndex * self.scrollWidth, 0.) animated:animated];
         if (selectedIndex == _selectedIndex) {
             self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:selectedIndex].x,
@@ -400,7 +397,7 @@
             [self getRed:&red green:&green blue:&blue alpha:&alpha fromColor:self.pageItemsTitleColor];
             [self getRed:&highlightedRed green:&highlightedGreen blue:&highlightedBlue alpha:&highlightedAlpha fromColor:self.selectedPageItemTitleColor];
             
-            CGFloat absRatio = fabsf(ratio);
+            CGFloat absRatio = fabs(ratio);
             UIColor *prev = [UIColor colorWithRed:red * absRatio + highlightedRed * (1 - absRatio)
                                             green:green * absRatio + highlightedGreen * (1 - absRatio)
                                              blue:blue * absRatio + highlightedBlue  * (1 - absRatio)

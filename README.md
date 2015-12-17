@@ -77,6 +77,13 @@ Go ahead and experiment with these properties:
     @property (strong, nonatomic) UIColor *pageItemsTitleColor;
     @property (strong, nonatomic) UIColor *selectedPageItemColor;
 
+modify by arrayinfree
+---------------
+    @property (strong, nonatomic) DAPagesContainerTopBar *topBar;
+    @property (strong, nonatomic) UIScrollView *scrollView;
+
+DaPagesConntainerTopBar.h
+- (void)layoutItemWithSpecifyX:(float)offectX Y:(float)offectY w:(float)width h:(float)height;
 
 TODO
 ==============

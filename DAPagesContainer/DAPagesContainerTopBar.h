@@ -31,4 +31,5 @@
 - (CGPoint)centerForSelectedItemAtIndex:(NSUInteger)index;
 - (CGPoint)contentOffsetForSelectedItemAtIndex:(NSUInteger)index;
 
+- (void)layoutItemWithSpecifyX:(float)offectX Y:(float)offectY w:(float)width h:(float)height;
 @end

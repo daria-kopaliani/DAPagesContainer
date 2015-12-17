@@ -24,6 +24,7 @@
 		43222CC71768E4D30088986F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43222CC41768E4D30088986F /* MainStoryboard.storyboard */; };
 		438BA887175785B00033EB2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438BA886175785B00033EB2D /* UIKit.framework */; };
 		438BA88B175785B00033EB2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438BA88A175785B00033EB2D /* CoreGraphics.framework */; };
+		EFAB51CD1C22B4AE00F395B5 /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = EFAB51CC1C22B4AE00F395B5 /* indicator.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		438BA886175785B00033EB2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		438BA888175785B00033EB2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		438BA88A175785B00033EB2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EFAB51CC1C22B4AE00F395B5 /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		438BA8B6175786240033EB2D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EFAB51CC1C22B4AE00F395B5 /* indicator.png */,
 				43222CBA1768E49F0088986F /* beaver.jpg */,
 				43222CBB1768E49F0088986F /* buckDeer.jpg */,
 				43222CBC1768E49F0088986F /* cat.jpg */,
@@ -206,6 +209,7 @@
 				43222CB81768E48E0088986F /* Default@2x.png in Resources */,
 				43222CBE1768E49F0088986F /* beaver.jpg in Resources */,
 				43222CBF1768E49F0088986F /* buckDeer.jpg in Resources */,
+				EFAB51CD1C22B4AE00F395B5 /* indicator.png in Resources */,
 				43222CC01768E49F0088986F /* cat.jpg in Resources */,
 				43222CC11768E49F0088986F /* lion.jpg in Resources */,
 				43222CC61768E4D30088986F /* InfoPlist.strings in Resources */,
