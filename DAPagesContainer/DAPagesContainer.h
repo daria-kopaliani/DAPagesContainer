@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DAPagesContainerTopBar.h"
+#import "DAPageIndicatorView.h"
 
 @interface DAPagesContainer : UIViewController
 
@@ -83,4 +84,7 @@
  */
 - (void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation;
 
+
+@property (strong, nonatomic) DAPagesContainerTopBar *topBar;
+@property (strong, nonatomic) UIScrollView *scrollView;
 @end
